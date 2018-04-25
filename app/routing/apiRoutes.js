@@ -1,4 +1,6 @@
-let app = require('../../server.js')
+let express = require('express')
+let app = express.Router()
+
 let friendsList = require("../data/friends.js")
 
 app.get("/api/friends", function(req, res) {
@@ -9,7 +11,7 @@ app.post("/api/friends", function(req, res) {
 
     let newFriend = req.body
   
-    newFriend.routeName = newRes.name.replace(/\s+/g, "").toLowerCase()
+    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase()
   
     console.log(newFriend)
   
@@ -21,3 +23,5 @@ app.post("/api/friends", function(req, res) {
 
 
   })
+
+  module.exports = app

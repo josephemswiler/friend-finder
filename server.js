@@ -1,18 +1,20 @@
 let express = require('express')
 let bodyParser = require('body-parser')
-let path = require('path')
 let app = express()
-const PORT = 8001 //process.env.PORT
-
-app.use(express.static(__dirname))
+let htmlRoutes = require('./app/routing/htmlRoutes.js')
+let apiRoutes = require('./app/routing/apiRoutes.js')
+let PORT = 8080 //|| process.env.PORT
 
 app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+    console.log(`App listening on PORT ${PORT}!`)
 })
+
+app.use(express.static(__dirname))
 
 app.use(bodyParser.urlencoded({
     extended: true
 }))
+
 app.use(bodyParser.json())
 
-module.exports = app
+app.use('/', htmlRoutes, apiRoutes)

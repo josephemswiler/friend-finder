@@ -110,7 +110,7 @@ $(document).ready(function () {
     $(document).on('click', '.submit-btn', function (event) {
         event.preventDefault()
 
-        class Submission{
+        class Submission {
             constructor(name, photo, results) {
                 this.name = name
                 this.photo = photo
@@ -159,7 +159,13 @@ $(document).ready(function () {
         }
         if (completeForm) {
             let answers = new Submission(name, photo, results)
-            console.log(answers)
+
+            $.post('/api/friends', answers)
+                .then(function (data) {
+                    console.log(data)
+                })
+
+
         }
     }) //click .submit-btn
 })
