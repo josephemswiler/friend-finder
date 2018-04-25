@@ -36,7 +36,7 @@ $(document).ready(function () {
 
         let select = $('<select>')
             .attr('name', 'question')
-            .addClass(`custom-select custom-select-sm w-75 question-${count}`)
+            .addClass(`custom-select custom-select-sm question-${count}`)
             .append(placeholder)
 
         let hr = $('<hr>')
@@ -88,17 +88,78 @@ $(document).ready(function () {
             }
         })
 
+    $('.about-form')
+        .find('[name="input-name"]')
+        .change(function (event) {
+            if ($(this).val().trim() === '') {
+                $(this).removeClass('is-valid').addClass('is-invalid')
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid')
+            }
+        })
+        .end()
+        .find('[name="input-photo"]')
+        .change(function (event) {
+            if ($(this).val().trim() === '') {
+                $(this).removeClass('is-valid').addClass('is-invalid')
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid')
+            }
+        })
+
     $(document).on('click', '.submit-btn', function (event) {
         event.preventDefault()
 
-        for (let i in questions) {
-            let count = parseInt(i) + 1
-            console.log($(`.question-${count}`).val())
-
-            if ($(`.question-${count}`).val() === 'Select an Option') {
-                $(`.question-${count}`).addClass('is-invalid')
+        class Submission{
+            constructor(name, photo, results) {
+                this.name = name
+                this.photo = photo
+                this.results = results
             }
         }
 
-    })
+        let completeForm = true
+
+        let name = $('.about-form')
+            .find('[name="input-name"]')
+            .val()
+            .trim()
+
+        let photo = $('.about-form')
+            .find('[name="input-photo"]')
+            .val()
+            .trim()
+
+        let results = []
+
+        if (name === '') {
+            $('.about-form')
+                .find('[name="input-name"]')
+                .addClass('is-invalid')
+            completeForm = false
+        }
+
+        if (photo === '') {
+            $('.about-form')
+                .find('[name="input-photo"]')
+                .addClass('is-invalid')
+            completeForm = false
+        }
+
+        for (let i in questions) {
+            let count = parseInt(i) + 1
+
+            if ($(`.question-${count}`).val() === 'Select an Option') {
+                $(`.question-${count}`).addClass('is-invalid')
+                completeForm = false
+            }
+
+            if (completeForm)
+                results.push($(`.question-${count}`).val())
+        }
+        if (completeForm) {
+            let answers = new Submission(name, photo, results)
+            console.log(answers)
+        }
+    }) //click .submit-btn
 })

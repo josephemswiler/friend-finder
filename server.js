@@ -1,3 +1,3 @@
 
 
-// app.use(express.static('app'))
+// app.use(express.static(__dirname))
