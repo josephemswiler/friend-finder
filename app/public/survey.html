@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+    <title>Friend Finder</title>
+</head>
+
+<body>
+    <div class="container mb-3">
+        <nav class="navbar navbar-light bg-light sticky-top">
+            <a class="navbar-brand btn-light btn-lg home-btn" href="home">
+                <i class="fas fa-home"></i>
+            </a>
+        </nav>
+        <div class="jumbotron text-center bg-light">
+            <h1 class="display-4">
+                <i class="fas fa-table text-primary"></i> Survey</h1>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">
+                        About You
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="input-name">Name</label>
+                                <input type="text" class="form-control is-invalid w-75" placeholder="Mike Smith">
+                                <div class="invalid-feedback">
+                                    Please enter your name.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-photo">Photo Link</label>
+                                <input type="text" class="form-control is-invalid w-75" placeholder="https://bit.ly/2lYjODX">
+                                <div class="invalid-feedback">
+                                    Please enter a valid URL to a photo!
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">
+                        Survey Questions
+                    </div>
+                    <div class="card-body">
+                        <form class="survey-questions">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm">
+                <a class="btn btn-light btn-sm" href="/api/friends" role="button">API Friends List</a>
+                <a class="btn btn-light btn-sm" href="#" role="button">GitHub Repo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Generate Survey Local JS -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
