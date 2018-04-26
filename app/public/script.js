@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    // let friendsList = require("../data/friends.js")
-    
+
     let questions = [
         'Your mind is always buzzing with unexplored ideas and plans.',
         'Generally speaking, you rely more on your experience than your imagination.',
@@ -153,6 +152,8 @@ $(document).ready(function () {
 
             if ($(`.question-${count}`).val() === 'Select an Option') {
                 $(`.question-${count}`).addClass('is-invalid')
+                let text = $(`.question-${count}`).parent().children().first().children().first().text()
+                $(`.question-${count}`).parent().children().first().children().first().html(`${text} <i class="fas fa-times-circle text-danger"></i>`)
                 completeForm = false
             }
 
@@ -164,16 +165,52 @@ $(document).ready(function () {
 
             $.post('/api/friends', answers)
                 .then(function (data) {
-
-                    $('.modal-body h1').text(friendsList[0].name)
-                    $('.modal-body img').attr('src', friendsList[0].photo)
-
-                    $('.submit-btn')
-                        .attr('data-toggle', 'modal')
-                        .attr('data-target', '#exampleModalCenter')
+                    return $.get('/api/friends')
                 })
+                .then(data => {
+                    let friendsList = data
 
+                    class Friend{
+                        constructor(name, photo, score) {
+                            this.name = name
+                            this.photo = photo
+                            this.score = score
+                        }
+                    }
+                    
+                    let scoreBoard = []
+                    let match = ''
+                
+                    for (let i in friendsList) {
+                     
+                        let sum = (total, value) => parseInt(total) + parseInt(value)
+                        
+                        let friend = new Friend(friendsList[i].name, friendsList[i].photo, friendsList[i].results.reduce(sum))
+                
+                        scoreBoard.push(friend)
 
+                        scoreBoard.sort(function (a, b) {
+                            return a.score - b.score
+                        })
+                    }
+
+                    for (let i in scoreBoard) {
+                        if (scoreBoard[i].name === answers.name) {
+                            let diffFromPrev = scoreBoard[i].score - scoreBoard[parseInt(i)-1].score
+                            
+                            let diffToNext = scoreBoard[parseInt(i)+1].score - scoreBoard[i].score
+                            
+                            if (diffToNext > diffFromPrev) {
+                                match = scoreBoard[parseInt(i)-1]
+                            } else {
+                                match = scoreBoard[parseInt(i)+1]
+                            }
+                        }
+                    }
+                    $('.modal-body h1').text(`${match.name}!`)
+                    $('.modal-body img').attr('src', match.photo)
+                    $('#exampleModalCenter').modal('toggle')
+                })
         }
     }) //click .submit-btn
 })

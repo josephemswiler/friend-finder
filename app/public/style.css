@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers|Permanent+Marker');
-
 .bg-img {
     background-image: URL(https://bit.ly/2qYO9GU);
     background-position: center;
     background-size: cover;
 }
 
-.header-content {
-   color: #F9F871;
-   font-family: 'Bangers', cursive;
-    background-image: linear-gradient(to right bottom, rgba(132,94,194,.7), rgba(0,0,0,.6), rgba(249,248,113,.7));
+.header-content,
+.modal-body {
+    color: #F9F871;
+    font-family: 'Bangers', cursive;
+    background-image: linear-gradient(to right bottom, rgba(132, 94, 194, .7), rgba(0, 0, 0, .6), rgba(249, 248, 113, .7));
 }
 
-.header-content h4 {
+.header-content h4,
+.modal-title {
     font-family: 'Permanent Marker', cursive;
 }
 
@@ -22,5 +23,5 @@
     border: 0;
     border-top: 1px solid #845EC2;
     margin: 1em 0;
-    padding: 0; 
+    padding: 0;
 }
