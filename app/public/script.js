@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // let friendsList = require("../data/friends.js")
+    
     let questions = [
         'Your mind is always buzzing with unexplored ideas and plans.',
         'Generally speaking, you rely more on your experience than your imagination.',
@@ -162,7 +164,13 @@ $(document).ready(function () {
 
             $.post('/api/friends', answers)
                 .then(function (data) {
-                    console.log(data)
+
+                    $('.modal-body h1').text(friendsList[0].name)
+                    $('.modal-body img').attr('src', friendsList[0].photo)
+
+                    $('.submit-btn')
+                        .attr('data-toggle', 'modal')
+                        .attr('data-target', '#exampleModalCenter')
                 })
 
 

@@ -13,14 +13,35 @@ app.post("/api/friends", function(req, res) {
   
     newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase()
   
-    console.log(newFriend)
-  
     friendsList.push(newFriend)
   
     res.json(newFriend)
 
     //check compatibility
 
+    class Friend{
+        constructor(name, score) {
+            this.name = name
+            this.score = score
+        }
+    }
+
+    let scoreBoard = []
+
+    for (let i in friendsList) {
+     
+        let sum = (total, value) => parseInt(total) + parseInt(value)
+        
+        let friend = new Friend(friendsList[i].name, friendsList[i].results.reduce(sum))
+
+        scoreBoard.push(friend)
+
+        scoreBoard.sort(function (a, b) {
+            return a.score - b.score
+        })
+
+        console.log(scoreBoard)
+    }
 
   })
 

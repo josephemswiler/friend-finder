@@ -12,30 +12,35 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         crossorigin="anonymous">
-
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="/app/public/style.css">
     <title>Friend Finder</title>
 </head>
 
-<body>
+<body class="text-dark">
     <div class="container mb-3">
-        <nav class="navbar navbar-light bg-light sticky-top">
-            <a class="navbar-brand btn-light btn-lg home-btn" href="/">
-                <i class="fas fa-home"></i>
-            </a>
-        </nav>
-        <div class="jumbotron text-center bg-light">
-            <h1 class="display-4">
-                <i class="fas fa-user-circle text-danger"></i> Friend Finder</h1>
-            <hr class="my-4">
-            <div class="row mb-4">
-                <div class="col-sm">
-                    <h4>Answer a few basic questions to find your new BFF!</h4>
+        <div class="bg-img p-3 mb-3 pb-5 rounded-bottom">
+            <div class="container text-center">
+                <div class="text-left mb-5">
+                    <a class="btn-light btn-lg" href="/">
+                        <i class="fas fa-home"></i>
+                    </a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <a class="btn btn-primary btn-lg btn-block survey-btn" href="survey" role="button">
-                        <i class="fas fa-table"></i> Take Survey</a>
+                <div class="header-content rounded p-3 mb-5">
+                    <h1 class="display-4">
+                        <i class="fas fa-user-circle text-danger"></i> Avenger Matcher</h1>
+                    <hr class="my-4">
+                    <div class="row mb-4">
+                        <div class="col-sm">
+                            <h4>Which Avenger are you?</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="btn btn-primary btn-lg btn-block survey-btn" href="survey" role="button">
+                            <i class="fas fa-table"></i> Take The Survey</a>
+                    </div>
                 </div>
             </div>
         </div>
